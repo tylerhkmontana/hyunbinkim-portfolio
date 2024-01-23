@@ -7,6 +7,9 @@
   src: url(/W95FA.otf);
 }
 :root {
-   background-color: #008484;
-   font-family: W95FA;
+  background-color: #008484;
+  font-family: W95FA;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }

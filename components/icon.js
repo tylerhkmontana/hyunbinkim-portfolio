@@ -11,7 +11,8 @@ export default function Icon({ iconImage, iconName }) {
         width: 800,
         height: 500,
         x: 50,
-        y: 50
+        y: 50,
+        isMaximized: false
     })
 
     useEffect(() => {
@@ -45,6 +46,20 @@ export default function Icon({ iconImage, iconName }) {
         closeProgram(iconName)
     }
 
+    function maximize() {
+        const screenHeight = window.innerHeight
+        const screenWidth = window.innerWidth
+
+        setWindowStatus(prev => ({width: screenWidth, height: screenHeight - 35, x: 0, y: 0, isMaximized: true}))
+    }
+
+    function restore() {
+        const screenHeight = window.innerHeight
+        const screenWidth = window.innerWidth
+
+        setWindowStatus(prev => ({width: 800, height: 500, x: 50, y: 50, isMaximized: false}))
+    }
+
     const selectedStyle = {
         backgroundColor: '#00007F', 
         border: '1px dotted ',
@@ -62,13 +77,15 @@ export default function Icon({ iconImage, iconName }) {
             
             <Draggable handle="#windowTop" onStop={draggableHandler}>
                 <div 
-                    className="p-[2px] z-20 bg-[#c0c0c0] fixed top-10 left-20 shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff] overflow-auto flex flex-col" 
+                    className="p-[2px] bg-[#c0c0c0] fixed flex flex-col shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff]" 
                     style={{ 
-                        display: isWindowOpened ? 'block' : 'none', 
+                        display: isWindowOpened ? 'flex' : 'none', 
                         resize: 'both', 
                         overflow: 'auto', 
                         width: windowStatus.width, 
                         height: windowStatus.height, 
+                        top: windowStatus.y,
+                        left: windowStatus.x,
                         zIndex: activeProgram.iconName === iconName ? 99 : 20 }}>
                     <div 
                         id="windowTop" 
@@ -84,13 +101,13 @@ export default function Icon({ iconImage, iconName }) {
                         <div className="flex gap-1 ml-auto">
                             <button 
                                 className="bg-[#c0c0c0] px-2 text-sm shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff] active:shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] font-bold text-black"
-                                onClick={() => setIsWindowOpened(false)}>
+                                onClick={restore}>
                                 _
                             </button>
                             <button 
                                 className="bg-[#c0c0c0] px-1 text-sm shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff] active:shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] flex items-center"
-                                onClick={() => setIsWindowOpened(false)}>
-                                <img className="w-4 h-4" src="/maximize.png" alt="maximize icon"/>
+                                onClick={windowStatus.isMaximized ? restore : maximize}>
+                                <img className="w-4 h-4" src={windowStatus.isMaximized ? '/restore.png' : '/maximize.png'} alt="maximize icon"/>
                             </button>
                             <button 
                                 className="bg-[#c0c0c0] px-2 text-sm shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff] active:shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] font-bold text-black"
@@ -99,8 +116,22 @@ export default function Icon({ iconImage, iconName }) {
                             </button>
                         </div>
                     </div>
-                    <div className="w-full h-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white">
-                     
+                    <div className="w-full h-7 bg-[#c0c0c0] flex items-center gap-2 pl-1">
+                            <span><span className="underline">F</span>ile</span>
+                            <span><span className="underline">E</span>dit</span>
+                            <span><span className="underline">V</span>iew</span>
+                            <span><span className="underline">H</span>elp</span>
+                    </div>
+                    <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow">
+                     <p>asdf</p>
+                    </div>
+                    <div className="w-full h-7 bg-[#c0c0c0] flex">
+                            <div className="flex-[2] flex items-center px-2 shadow-[inset_1px_1px_1px_#7d7d7d,inset_-1px_-1px_1px_#ffffff]">
+                                <p>3 object(s)</p>
+                            </div>
+                            <div className="flex-[1] flex items-center px-2 shadow-[inset_1px_1px_1px_#7d7d7d,inset_-1px_-1px_1px_#ffffff]">
+                                <p>267 bytes</p>
+                            </div>
                     </div>
                 </div>
             </Draggable>
