@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useTaskManager } from "@/context/taskManager";
+import Window from '@/components/window'
 
 export default function Layout({ children }) {
-  const { tasks, activeProgram, switchToActive } = useTaskManager()
+  const { tasks, activeProgram, minimizeProgram, unminimizeProgram, switchToActive } = useTaskManager()
+  const { openedPrograms }  = tasks
   const [isStartToggled, setIsStartToggled] = useState(false)
 
   useEffect(() => {
@@ -17,11 +19,28 @@ export default function Layout({ children }) {
     return () => window.removeEventListener('click', e => deselectHandler(e))
 })
 
+  const clickedFromTaskbar = (pid) => {
+    if (openedPrograms[pid].isMinimized) {
+      unminimizeProgram(pid)
+    } else if (activeProgram === pid && !openedPrograms[pid].isMinimized) {
+      minimizeProgram(pid)
+    } else {
+      switchToActive(pid)
+    }
+  }
+
   return (
     <div>
       <main>
+        {/* <button onClick={() => console.log(tasks.openedPrograms)}>Open Task Manager</button> */}
         {children}
 
+        {/* Opened Windows */}
+        {
+          Object.keys(openedPrograms).map((pid) => <Window key={pid} programInfo={openedPrograms[pid]} pid={pid}/>)
+        }
+
+        {/* Start Menu */}
         <div id="startMenu" className="fixed left-1 bottom-8 z-[100] w-64 h-auto bg-[#C0C0C0] shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff]" style={{ display: isStartToggled ? 'block' : 'none' }}>
           <div className="absolute h-full w-8 top-0 left-0 bg-[#909090]">
             <h2 className="absolute rotate-[270deg] origin-[0 0] bottom-0 left-0 ml-[-48px] mb-[62px] text-xl text-white"><strong className="text-2xl text-[#c0c0c0]">Borninkorea</strong>94</h2>
@@ -57,6 +76,8 @@ export default function Layout({ children }) {
           </ul>
         </div>
 
+
+      {/* Status Bar */}
         <footer className="fixed bottom-0 w-screen h-8 bg-[#C0C0C0] shadow-[0px_-2px_2px_#fff] flex items-stretch justify-start p-1">
           <div 
             id="startButton" 
@@ -74,17 +95,17 @@ export default function Layout({ children }) {
 
           <div className="flex ml-4 gap-2">
             {
-              tasks.openedPrograms.map((p, i) => 
+              Object.keys(openedPrograms).map((pid, i) => 
                 <span 
                   key={i}
                   className="px-2 w-40 cursor-pointer flex items-center gap-1" 
                   style={{ 
-                    boxShadow: activeProgram.iconName === p.iconName ? 'inset 2px 2px 0px #7d7d7d, inset -2px -2px 0px #ffffff' : '-1px -1px 2px #fff, 1px 1px 2px #000', 
-                    backgroundColor: activeProgram.iconName === p.iconName && 'rgb(248 250 252)'
+                    boxShadow: activeProgram === pid ? 'inset 2px 2px 0px #7d7d7d, inset -2px -2px 0px #ffffff' : '-1px -1px 2px #fff, 1px 1px 2px #000', 
+                    backgroundColor: activeProgram === pid && 'rgb(248 250 252)'
                   }}
-                  onClick={() => switchToActive(p.iconName, p.iconImage)}>
-                    <img className="w-4 h-4" src={p.iconImage} alt={`icon image of ${p.iconName}`}/>
-                  { p.iconName }
+                  onClick={() => clickedFromTaskbar(pid)}>
+                    <img className="w-4 h-4" src={openedPrograms[pid].iconImage} alt={`icon image of ${openedPrograms[pid].iconName}`}/>
+                  { openedPrograms[pid].iconName }
                 </span>)
             }
           </div>
