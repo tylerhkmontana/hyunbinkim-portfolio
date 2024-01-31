@@ -48,29 +48,29 @@ export default function Layout({ children }) {
           <ul className="flex flex-col h-full justify-evenly items-stretch">
             <li className="pl-12 pr-2 py-3 flex items-center justify-between hover:bg-[#000080] hover:text-white">
               <div className="flex items-center gap-2">
-                <img className="w-7 h-7" src="/documents.png" alt="documents icon"/>
+                <img className="w-7 h-7" src="/icons/documents.png" alt="documents icon"/>
                 <span><span className="underline">D</span>ocuments</span>
               </div>
               <span>&#9656;</span>
             </li>
             <li className="pl-12 pr-2 py-3 flex items-center justify-between hover:bg-[#000080] hover:text-white">
               <div className="flex items-center gap-2">
-                <img className="w-7 h-7" src="/settings.png" alt="setting icon"/>
+                <img className="w-7 h-7" src="/icons/settings.png" alt="setting icon"/>
                 <span><span className="underline">S</span>ettings</span>
               </div>
               <span>&#9656;</span>
             </li>
             <li className="pl-12 py-3 flex items-center gap-2 hover:bg-[#000080] hover:text-white">
-              <img className="w-7 h-7" src="/find.png" alt="find icon"/>
+              <img className="w-7 h-7" src="/icons/find.png" alt="find icon"/>
               <span><span className="underline">F</span>ind</span>
             </li>
             <li className="pl-12 py-3 flex items-center gap-2 hover:bg-[#000080] hover:text-white">
-              <img className="w-7 h-7" src="/run.png" alt="run icon"/>
+              <img className="w-7 h-7" src="/icons/run.png" alt="run icon"/>
               <span><span className="underline">R</span>un</span>
             </li>
             <hr/>
             <li className="pl-12 py-3 flex items-center gap-2 hover:bg-[#000080] hover:text-white">
-              <img className="w-7 h-7" src="/shutdown.png" alt="shutdown icon"/>
+              <img className="w-7 h-7" src="/icons/shutdown.png" alt="shutdown icon"/>
               <span>Sh<span className="underline">u</span>t Down..</span>
             </li>
           </ul>
@@ -111,7 +111,7 @@ export default function Layout({ children }) {
           </div>
 
           <div className="shadow-[inset_2px_2px_0px_#7d7d7d,inset_-2px_-2px_0px_#ffffff] px-2 flex items-center ml-auto">
-            <img className="w-4" src="/sound.png" alt="sound icon"/>
+            <img className="w-4" src="/icons/sound.png" alt="sound icon"/>
             <span className="text-xs">
               3:49 PM
             </span>

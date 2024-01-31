@@ -1,0 +1,17 @@
+[  
+     {
+        "iconName": "Readme.exe",
+        "iconImage": "/icons/cmd.png",
+        "programType": "cmd"
+    },
+    {
+        "iconName": "Portfolios",
+        "iconImage": "/icons/documents.png",
+        "programType": "folder"
+    },
+    {
+        "iconName": "Resume",
+        "iconImage": "/icons/notepad.png",
+        "programType": "txt"
+    }
+]
