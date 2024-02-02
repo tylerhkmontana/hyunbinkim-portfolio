@@ -37,7 +37,7 @@ export default function Layout({ children }) {
 
         {/* Opened Windows */}
         {
-          Object.keys(openedPrograms).map((pid) => <Window key={pid} programInfo={openedPrograms[pid]} pid={pid}/>)
+          Object.keys(openedPrograms).map((pid) => <Window key={pid} programInfo={openedPrograms[pid].programInfo} windowInfo={openedPrograms[pid].windowInfo} pid={pid}/>)
         }
 
         {/* Start Menu */}
@@ -104,8 +104,8 @@ export default function Layout({ children }) {
                     backgroundColor: activeProgram === pid && 'rgb(248 250 252)'
                   }}
                   onClick={() => clickedFromTaskbar(pid)}>
-                    <img className="w-4 h-4" src={openedPrograms[pid].iconImage} alt={`icon image of ${openedPrograms[pid].iconName}`}/>
-                  { openedPrograms[pid].iconName }
+                    <img className="w-4 h-4" src={openedPrograms[pid].programInfo.iconImage} alt={`icon image of ${openedPrograms[pid].programInfo.iconName}`}/>
+                  { openedPrograms[pid].programInfo.iconName }
                 </span>)
             }
           </div>

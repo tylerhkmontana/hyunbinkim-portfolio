@@ -3,7 +3,8 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { useTaskManager } from "..//context/taskManager"
 
-export default function Icon({ iconImage, iconName, pid }) {
+export default function Icon({ programInfo }) {
+    const { iconName, iconImage } = programInfo
     const { openProgram, tasks } = useTaskManager()
     const [isSelected, setIsSelected] = useState(false)
 
@@ -34,7 +35,7 @@ export default function Icon({ iconImage, iconName, pid }) {
 
         if (e.detail === 2) {
             setIsSelected(true)
-            openProgram(pid, iconName, iconImage, windowWidth/2, windowHeight/2, openLocation.x, openLocation.y)
+            openProgram(programInfo, windowWidth/2, windowHeight/2, openLocation.x, openLocation.y)
         } else if (e.detail === 1) {
             setIsSelected(!isSelected)
         }

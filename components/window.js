@@ -1,9 +1,11 @@
 import Draggable from "react-draggable"
+import Icon from "./icon"
 import { useTaskManager } from "..//context/taskManager"
 
-export default function Window({ programInfo, pid }) {
-    const { windowInfo, activeProgram, closeProgram, maximizeProgram, restoreProgram, minimizeProgram, switchToActive } = useTaskManager()
-    const { iconName, iconImage, width, height, x, y, isMaximized, isMinimized } = programInfo
+export default function Window({ programInfo, windowInfo, pid }) {
+    const { screenInfo, activeProgram, closeProgram, maximizeProgram, restoreProgram, minimizeProgram, switchToActive } = useTaskManager()
+    const { iconName, iconImage, programType, asciiArt, content, children } = programInfo
+    const { width, height, x, y, isMaximized, isMinimized } = windowInfo
 
     function close() {
         closeProgram(pid)
@@ -11,6 +13,44 @@ export default function Window({ programInfo, pid }) {
 
     function draggableHandler(event, data) {
         // setWindowStatus(prev => ({...prev, x: data.x, y: data.y }))
+    }
+
+    function renderMainWindow() {
+        if (programType === 'cmd') {
+            return <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-black text-white grow px-2 py-3 overflow-y-auto">
+                {
+                    asciiArt &&
+                    <>
+                    <pre className="leading-4">
+                        { asciiArt }
+                    </pre>
+                    <br/>
+                    </>
+                }
+                <pre>
+                    {content}
+                </pre>
+               <br/>
+                <p>
+                    C:\Windows\Users\HyunbinKim <strong>_</strong>
+                </p>
+            </div>
+
+        }
+        else if (programType === 'folder') {
+            return <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow px-2 py-3 flex flex-wrap gap-2">
+                {
+                    children &&
+                    children.map((child, i) => <Icon key={i} programInfo={child}/>)
+                }
+            </div>
+        } else if (programType === 'txt') {
+            return <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow px-2 py-3 overflow-auto">
+             <pre>
+                { content }
+             </pre>
+            </div>
+        }
     }
 
     return (
@@ -23,8 +63,8 @@ export default function Window({ programInfo, pid }) {
                 display: programInfo.isMinimized ? 'none' : 'flex',
                 resize: 'both', 
                 overflow: 'auto', 
-                width: isMaximized ? windowInfo.width : width, 
-                height: isMaximized ? windowInfo.height -35 : height, 
+                width: isMaximized ? screenInfo.width : width, 
+                height: isMaximized ? screenInfo.height -35 : height, 
                 top: isMaximized ? 0 : y,
                 left: isMaximized ? 0 : x,
                 zIndex: activeProgram === pid ? 99 : 20 }}>
@@ -60,17 +100,21 @@ export default function Window({ programInfo, pid }) {
             </div>
 
             {/* Widow Menus */}
-            <div className="w-full h-7 bg-[#c0c0c0] flex items-center gap-2 pl-1">
-                    <span><span className="underline">F</span>ile</span>
-                    <span><span className="underline">E</span>dit</span>
-                    <span><span className="underline">V</span>iew</span>
-                    <span><span className="underline">H</span>elp</span>
-            </div>
+            {
+                programType !== 'cmd' &&
+                    <div className="w-full h-7 bg-[#c0c0c0] flex items-center gap-2 pl-1">
+                        <span><span className="underline">F</span>ile</span>
+                        <span><span className="underline">E</span>dit</span>
+                        <span><span className="underline">V</span>iew</span>
+                        <span><span className="underline">H</span>elp</span>
+                    </div>
+            }
+           
 
             {/* Window Main Section */}
-            <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow">
-             <p>asdf</p>
-            </div>
+            {
+                renderMainWindow()
+            }
 
             {/* Window property */}
             <div className="w-full h-7 bg-[#c0c0c0] flex">

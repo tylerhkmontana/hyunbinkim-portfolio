@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const Context = createContext();
 
 export function TaskManager({ children }) {
-  const [windowInfo, setWindoInfo] = useState({
+  const [screenInfo, setScreenInfo] = useState({
     width: 0,
     height: 0
   })
@@ -16,14 +16,14 @@ export function TaskManager({ children }) {
 
   useEffect(() => {
     // initialize window size
-    setWindoInfo({
+    setScreenInfo({
         width: window.innerWidth,
         height: window.innerHeight
     })
 
     // update window size
     function resizeHandler() {
-        setWindoInfo({
+        setScreenInfo({
             width: window.innerWidth,
             height: window.innerHeight
         })
@@ -34,21 +34,23 @@ export function TaskManager({ children }) {
     return () => window.removeEventListener('click', () =>  resizeHandler())
   }, [])
 
-  const openProgram = (pid, iconName, iconImage, width, height, x, y) => {
+  const openProgram = (programInfo, width, height, x, y) => {
+    const { pid } = programInfo
     if ((pid in tasks.openedPrograms)) {
         if (tasks.openedPrograms[pid].isMinimized) {
             unminimizeProgram(pid)
         }
     } else {
         let newProgram = {
-            iconName,
-            iconImage,
-            width,
-            height,
-            x,
-            y,
-            isMinimized: false,
-            isMaximized: false
+            programInfo,
+            windowInfo : {
+              width,
+              height,
+              x,
+              y,
+              isMinimized: false,
+              isMaximized: false
+            }
         }
     
         setTasks(prev => ({
@@ -77,10 +79,9 @@ export function TaskManager({ children }) {
   }
 
   const maximizeProgram = (pid) => {
-    console.log(document.getElementById(pid))
     document.getElementById(pid).style.transform = 'translate(0, 0)'
     let updatedPrograms = {...tasks.openedPrograms}
-    updatedPrograms[pid].isMaximized = true
+    updatedPrograms[pid].windowInfo.isMaximized = true
 
     setTasks(prev => ({
         ...prev,
@@ -131,7 +132,7 @@ export function TaskManager({ children }) {
 
   return (
     <Context.Provider value={{ 
-        windowInfo,
+        screenInfo,
         tasks, 
         activeProgram, 
         openProgram, 
