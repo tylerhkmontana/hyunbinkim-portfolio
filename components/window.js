@@ -60,7 +60,7 @@ export default function Window({ programInfo, windowInfo, pid }) {
             id={pid}
             className="p-[2px] bg-[#c0c0c0] fixed flex flex-col shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff]" 
             style={{ 
-                display: programInfo.isMinimized ? 'none' : 'flex',
+                display: isMinimized ? 'none' : 'flex',
                 resize: 'both', 
                 overflow: 'auto', 
                 width: isMaximized ? screenInfo.width : width, 

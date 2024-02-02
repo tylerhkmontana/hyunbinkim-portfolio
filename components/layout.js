@@ -20,9 +20,9 @@ export default function Layout({ children }) {
 })
 
   const clickedFromTaskbar = (pid) => {
-    if (openedPrograms[pid].isMinimized) {
+    if (openedPrograms[pid].windowInfo.isMinimized) {
       unminimizeProgram(pid)
-    } else if (activeProgram === pid && !openedPrograms[pid].isMinimized) {
+    } else if (activeProgram === pid && !openedPrograms[pid].windowInfo.isMinimized) {
       minimizeProgram(pid)
     } else {
       switchToActive(pid)

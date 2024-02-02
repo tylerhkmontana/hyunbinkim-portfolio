@@ -65,7 +65,7 @@ export function TaskManager({ children }) {
   const closeProgram = (pid) => {
     let newOpenedPrograms = {...tasks.openedPrograms}
     delete newOpenedPrograms[pid]
-    let pids = Object.keys(newOpenedPrograms).filter(id => !newOpenedPrograms[id].isMinimized )
+    let pids = Object.keys(newOpenedPrograms).filter(id => !newOpenedPrograms[id].windowInfo.isMinimized )
 
     if (pids.length > 0) {
         setActiveProgram(pids.pop())
@@ -91,7 +91,7 @@ export function TaskManager({ children }) {
 
   const restoreProgram = (pid) => {
     let updatedPrograms = {...tasks.openedPrograms}
-    updatedPrograms[pid].isMaximized = false
+    updatedPrograms[pid].windowInfo.isMaximized = false
 
     setTasks(prev => ({
         ...prev,
@@ -103,14 +103,14 @@ export function TaskManager({ children }) {
   const minimizeProgram = (pid) => {
     let updatedPrograms = {...tasks.openedPrograms}
 
-    updatedPrograms[pid].isMinimized = true
+    updatedPrograms[pid].windowInfo.isMinimized = true
 
     setTasks(prev => ({
         ...prev,
         openedPrograms: updatedPrograms
     }))
 
-    let pids = Object.keys(updatedPrograms).filter(id => !updatedPrograms[id].isMinimized )
+    let pids = Object.keys(updatedPrograms).filter(id => !updatedPrograms[id].windowInfo.isMinimized )
 
     setActiveProgram(pids.pop())
   }
@@ -118,7 +118,7 @@ export function TaskManager({ children }) {
   const unminimizeProgram = (pid) => {
     let updatedPrograms = {...tasks.openedPrograms}
 
-    updatedPrograms[pid].isMinimized = false
+    updatedPrograms[pid].windowInfo.isMinimized = false
 
     setTasks(prev => ({
         ...prev,
