@@ -32,7 +32,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <main>
-        {/* <button onClick={() => console.log(tasks.openedPrograms)}>Open Task Manager</button> */}
+        <button onClick={() => console.log(tasks.openedPrograms)}>Open Task Manager</button>
         {children}
 
         {/* Opened Windows */}

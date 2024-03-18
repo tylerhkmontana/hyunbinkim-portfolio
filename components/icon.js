@@ -29,8 +29,8 @@ export default function Icon({ programInfo }) {
         let openLocation = { x: 50, y: 50}
 
         if (pids.length > 0) {
-            openLocation.x = tasks.openedPrograms[pids[pids.length - 1]].x + 20
-            openLocation.y = tasks.openedPrograms[pids[pids.length - 1]].y + 20
+            openLocation.x = tasks.openedPrograms[pids[pids.length - 1]].windowInfo.x + 20
+            openLocation.y = tasks.openedPrograms[pids[pids.length - 1]].windowInfo.y + 20
         } 
 
         if (e.detail === 2) {
