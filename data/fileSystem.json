@@ -21,7 +21,7 @@
                 "children": [
                     {
                         "pid": "a676f7cf-ebc5-4de5-930a-bf194120502a",
-                        "iconName": "Infinite-Order",
+                        "iconName": "Infinite-Order.exe",
                         "iconImage": "/icons/infinite-order-exe.png",
                         "programType": "browser",
                         "url": "https://infinite-order.vercel.app/"
@@ -46,19 +46,88 @@
                 "pid": "1254f11e-c13e-4a08-b78f-edf19963cd61",
                 "iconName": "Tylerkim-Design",
                 "iconImage": "/icons/documents.png",
-                "programType": "folder"
+                "programType": "folder",
+                "children": [
+                    {
+                        "pid": "a42a0983-8238-4064-bf86-b0f553bfecf7",
+                        "iconName": "Tylerkim-Design.exe",
+                        "iconImage": "/icons/tylerkim-design-exe.png",
+                        "programType": "browser",
+                        "url": "https://tylerkim-design-portfolio-gctilqs4o-tylerkim-design.vercel.app/"
+                    },
+                    {
+                        "pid": "7892a7a9-507e-4f3a-a876-ceb98eb5a262",
+                        "iconName": "README.md",
+                        "iconImage": "/icons/notepad.png",
+                        "programType": "md",
+                        "url": "https://raw.githubusercontent.com/tylerkim-freelancing/tylerkim-design-portfolio/main/README.md"
+                    },
+                    {
+                        "pid": "0acb6101-61b5-4886-bf5a-8c4432556061",
+                        "iconName": "github repo",
+                        "iconImage": "/icons/internet.png",
+                        "programType": "browser",
+                        "url": "https://github.com/tylerkim-freelancing/tylerkim-design-portfolio" 
+                    }
+                ]
             },
             {
                 "pid": "e273e682-6aa2-4ed9-b76a-a05ff6626c22",
-                "iconName": "Flash-Card",
+                "iconName": "Flashcard",
                 "iconImage": "/icons/documents.png",
-                "programType": "folder"
+                "programType": "folder",
+                "children": [
+                    {
+                        "pid": "adb45ba2-9d80-4aab-a2a1-87317f923901",
+                        "iconName": "Flashcard.exe",
+                        "iconImage": "/icons/flashcard-exe.png",
+                        "programType": "browser",
+                        "url": "https://tylerkim-design-portfolio-gctilqs4o-tylerkim-design.vercel.app/"
+                    },
+                    {
+                        "pid": "0ba5e28e-1680-4463-95bc-b9b1a5b69ec3",
+                        "iconName": "README.md",
+                        "iconImage": "/icons/notepad.png",
+                        "programType": "md",
+                        "url": "https://raw.githubusercontent.com/tylerhkmontana/flashcard/master/README.md"
+                    },
+                    {
+                        "pid": "ad0dae34-9510-4bcf-9a3b-6c0817e95458",
+                        "iconName": "github repo",
+                        "iconImage": "/icons/internet.png",
+                        "programType": "browser",
+                        "url": "https://github.com/tylerhkmontana/flashcard" 
+                    }
+                ]
             },
             {
                 "pid": "70e46266-86b3-4d07-ae01-b8829a50dcbb",
                 "iconName": "Bluevery",
                 "iconImage": "/icons/documents.png",
-                "programType": "folder"
+                "programType": "folder",
+                "children": [
+                    {
+                        "pid": "ea8cd12f-d287-4a08-af12-ab0a3d7539bc",
+                        "iconName": "Bluevery.exe",
+                        "iconImage": "/icons/bluevery-exe.png",
+                        "programType": "browser",
+                        "url": "https://tylerkim-design-portfolio-gctilqs4o-tylerkim-design.vercel.app/"
+                    },
+                    {
+                        "pid": "02fa5d35-9d8e-4429-a8a7-a6606a44d083",
+                        "iconName": "README.md",
+                        "iconImage": "/icons/notepad.png",
+                        "programType": "md",
+                        "url": "https://raw.githubusercontent.com/tylerhkmontana/bluevery/master/README.md"
+                    },
+                    {
+                        "pid": "807d2a19-57e6-4a02-81d0-537171c343d3",
+                        "iconName": "github repo",
+                        "iconImage": "/icons/internet.png",
+                        "programType": "browser",
+                        "url": "https://github.com/tylerhkmontana/bluevery" 
+                    }
+                ]
             }
         ]
     },

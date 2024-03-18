@@ -54,7 +54,7 @@ export default function Icon({ programInfo }) {
             <Draggable>
                 <div id={iconName} className="flex flex-col items-center gap-1 w-20 h-20 cursor-pointer" onClick={e => open(e)}>
                 <Image src={iconImage} width={50} height={50} style={{ pointerEvents: 'none'}} alt={`icon image of ${iconName}`}/>
-                <p className="text-xs p-[1px]" style={ isSelected ? selectedStyle : {} }>{ iconName }</p>
+                <p className="text-xs p-[1px] text-center" style={ isSelected ? selectedStyle : {} }>{ iconName }</p>
                 </div>
             </Draggable>
         </>
