@@ -17,7 +17,30 @@
                 "pid": "3b5a74f3-04d2-4624-a41e-26962fa5f760",
                 "iconName": "Infinite-Order",
                 "iconImage": "/icons/documents.png",
-                "programType": "folder"
+                "programType": "folder",
+                "children": [
+                    {
+                        "pid": "a676f7cf-ebc5-4de5-930a-bf194120502a",
+                        "iconName": "Infinite-Order",
+                        "iconImage": "/icons/infinite-order-exe.png",
+                        "programType": "browser",
+                        "url": "https://infinite-order.vercel.app/"
+                    },
+                    {
+                        "pid": "fe40cbcc-1885-4261-8e79-63bb41757bd8",
+                        "iconName": "README.md",
+                        "iconImage": "/icons/notepad.png",
+                        "programType": "md",
+                        "url": "https://raw.githubusercontent.com/tylerhkmontana/infinite-order/main/README.md"
+                    },
+                    {
+                        "pid": "ddb7dfba-96d0-49ac-ac4c-2cc7c0ef3125",
+                        "iconName": "github repo",
+                        "iconImage": "/icons/internet.png",
+                        "programType": "browser",
+                        "url": "https://github.com/tylerhkmontana/infinite-order" 
+                    }
+                ]
             },
             {
                 "pid": "1254f11e-c13e-4a08-b78f-edf19963cd61",
@@ -28,6 +51,12 @@
             {
                 "pid": "e273e682-6aa2-4ed9-b76a-a05ff6626c22",
                 "iconName": "Flash-Card",
+                "iconImage": "/icons/documents.png",
+                "programType": "folder"
+            },
+            {
+                "pid": "70e46266-86b3-4d07-ae01-b8829a50dcbb",
+                "iconName": "Bluevery",
                 "iconImage": "/icons/documents.png",
                 "programType": "folder"
             }

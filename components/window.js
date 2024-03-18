@@ -1,11 +1,14 @@
 import Draggable from "react-draggable"
+import Markdown from "react-markdown"
 import Icon from "./icon"
 import { useTaskManager } from "..//context/taskManager"
+import { useState } from "react"
 
 export default function Window({ programInfo, windowInfo, pid }) {
     const { screenInfo, activeProgram, closeProgram, maximizeProgram, restoreProgram, minimizeProgram, switchToActive } = useTaskManager()
-    const { iconName, iconImage, programType, asciiArt, content, children } = programInfo
+    const { iconName, iconImage, programType, asciiArt, content, children, url } = programInfo
     const { width, height, x, y, isMaximized, isMinimized } = windowInfo
+    const [markdown, setMarkdown] = useState('')
 
     function close() {
         closeProgram(pid)
@@ -13,6 +16,21 @@ export default function Window({ programInfo, windowInfo, pid }) {
 
     function draggableHandler(event, data) {
         // setWindowStatus(prev => ({...prev, x: data.x, y: data.y }))
+    }
+
+    async function fetchMd (url) {
+        let markdown
+        try {
+            await fetch(url)
+                .then(response => response.text())
+                .then(result => {
+                    setMarkdown(result)
+                })
+           
+        } catch(err) {
+            console.log(err)
+           setMarkdown('Failed to fetch...')
+        }
     }
 
     function renderMainWindow() {
@@ -32,13 +50,13 @@ export default function Window({ programInfo, windowInfo, pid }) {
                 </pre>
                <br/>
                 <p>
-                    C:\Windows\Users\HyunbinKim <strong>_</strong>
+                    C:\Windows\Users\HyunbinKim <strong className="animate-blink">_</strong>
                 </p>
             </div>
 
         }
         else if (programType === 'folder') {
-            return <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow px-2 py-3 flex flex-wrap gap-2">
+            return <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow px-2 py-3 flex flex-wrap gap-2 overflow-auto">
                 {
                     children &&
                     children.map((child, i) => <Icon key={i} programInfo={child}/>)
@@ -50,7 +68,14 @@ export default function Window({ programInfo, windowInfo, pid }) {
                 { content }
              </pre>
             </div>
-        }
+        } else if (programType === 'md') {
+            fetchMd(url)
+            return <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow px-2 py-3 overflow-auto">
+                <Markdown className="whitespace-pre-wrap">
+                    { markdown }
+                </Markdown>
+            </div>
+        } 
     }
 
     return (
@@ -117,14 +142,17 @@ export default function Window({ programInfo, windowInfo, pid }) {
             }
 
             {/* Window property */}
-            <div className="w-full h-7 bg-[#c0c0c0] flex">
-                    <div className="flex-[2] flex items-center px-2 shadow-[inset_1px_1px_1px_#7d7d7d,inset_-1px_-1px_1px_#ffffff]">
-                        <p>3 object(s)</p>
-                    </div>
-                    <div className="flex-[1] flex items-center px-2 shadow-[inset_1px_1px_1px_#7d7d7d,inset_-1px_-1px_1px_#ffffff]">
-                        <p>267 bytes</p>
-                    </div>
-            </div>
+            {
+                programType === 'folder' &&
+                <div className="w-full h-7 bg-[#c0c0c0] flex">
+                        <div className="flex-[2] flex items-center px-2 shadow-[inset_1px_1px_1px_#7d7d7d,inset_-1px_-1px_1px_#ffffff]">
+                            <p>3 object(s)</p>
+                        </div>
+                        <div className="flex-[1] flex items-center px-2 shadow-[inset_1px_1px_1px_#7d7d7d,inset_-1px_-1px_1px_#ffffff]">
+                            <p>267 bytes</p>
+                        </div>
+                </div>
+            }
         </div>
     </Draggable>
     )

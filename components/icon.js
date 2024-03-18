@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useTaskManager } from "..//context/taskManager"
 
 export default function Icon({ programInfo }) {
-    const { iconName, iconImage } = programInfo
+    const { iconName, iconImage, programType, url } = programInfo
     const { openProgram, tasks } = useTaskManager()
     const [isSelected, setIsSelected] = useState(false)
 
@@ -35,7 +35,9 @@ export default function Icon({ programInfo }) {
 
         if (e.detail === 2) {
             setIsSelected(true)
-            openProgram(programInfo, windowWidth/2, windowHeight/2, openLocation.x, openLocation.y)
+            programType === 'browser' ? 
+                window.open(url) : 
+                openProgram(programInfo, windowWidth/2, windowHeight/2, openLocation.x, openLocation.y)
         } else if (e.detail === 1) {
             setIsSelected(!isSelected)
         }
