@@ -82,7 +82,7 @@
                         "iconName": "Flashcard.exe",
                         "iconImage": "/icons/flashcard-exe.png",
                         "programType": "browser",
-                        "url": "https://tylerkim-design-portfolio-gctilqs4o-tylerkim-design.vercel.app/"
+                        "url": "https://flashcard-71c570373f62.herokuapp.com/"
                     },
                     {
                         "pid": "0ba5e28e-1680-4463-95bc-b9b1a5b69ec3",
@@ -111,7 +111,7 @@
                         "iconName": "Bluevery.exe",
                         "iconImage": "/icons/bluevery-exe.png",
                         "programType": "browser",
-                        "url": "https://tylerkim-design-portfolio-gctilqs4o-tylerkim-design.vercel.app/"
+                        "url": "https://bluevery-864748784bfe.herokuapp.com/"
                     },
                     {
                         "pid": "02fa5d35-9d8e-4429-a8a7-a6606a44d083",

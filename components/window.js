@@ -1,5 +1,6 @@
 import Draggable from "react-draggable"
 import Markdown from "react-markdown"
+import rehypeRaw from "rehype-raw"
 import Icon from "./icon"
 import { useTaskManager } from "..//context/taskManager"
 import { useState } from "react"
@@ -71,7 +72,7 @@ export default function Window({ programInfo, windowInfo, pid }) {
         } else if (programType === 'md') {
             fetchMd(url)
             return <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow px-2 py-3 overflow-auto">
-                <Markdown className="whitespace-pre-wrap">
+                <Markdown className="whitespace-pre-wrap" rehypePlugins={[rehypeRaw]}>
                     { markdown }
                 </Markdown>
             </div>
