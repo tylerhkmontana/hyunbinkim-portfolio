@@ -6,6 +6,7 @@ export default function Layout({ children }) {
   const { tasks, activeProgram, minimizeProgram, unminimizeProgram, switchToActive } = useTaskManager()
   const { openedPrograms }  = tasks
   const [isStartToggled, setIsStartToggled] = useState(false)
+  const [isHoveringSettings, setIsHoveringSettings] = useState(false)
 
   useEffect(() => {
     function deselectHandler(e) {
@@ -14,9 +15,22 @@ export default function Layout({ children }) {
         }
     }
 
-    window.addEventListener('click', e => deselectHandler(e))
+    // function hoverHandler(e) {
+    //   if (e.target.id === 'settings') {
+    //     console.log('settings...')
+    //     setIsHoveringSettings(true)
+    //   } else {
+    //     setIsHoveringSettings(false)
+    //   }
+    // }
 
-    return () => window.removeEventListener('click', e => deselectHandler(e))
+    window.addEventListener('click', e => deselectHandler(e))
+    // window.addEventListener('mouseover', e => hoverHandler(e))
+
+    return () => {
+      window.removeEventListener('click', e => deselectHandler(e))
+      // window.removeEventListener('mouseover', e => hoverHandler(e))
+    }
 })
 
   const clickedFromTaskbar = (pid) => {
@@ -53,12 +67,19 @@ export default function Layout({ children }) {
               </div>
               <span>&#9656;</span>
             </li>
-            <li className="pl-12 pr-2 py-3 flex items-center justify-between hover:bg-[#000080] hover:text-white">
+            <li id='settings' className="relative pl-12 pr-2 py-3 flex items-center justify-between hover:bg-[#000080] hover:text-white">
               <div className="flex items-center gap-2">
                 <img className="w-7 h-7" src="/icons/settings.png" alt="setting icon"/>
                 <span><span className="underline">S</span>ettings</span>
               </div>
               <span>&#9656;</span>
+
+              {/* <div className="absolute top-0 left-64 w-64 h-uato bg-[#C0C0C0] shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff]" style={{ display: isHoveringSettings ? 'block' : 'none' }}>
+                <div className="flex items-center gap-2">
+                  <img className="w-7 h-7" src="/icons/settings.png" alt="setting icon"/>
+                  <span><span className="underline">S</span>ettings</span>
+                </div>
+              </div> */}
             </li>
             <li className="pl-12 py-3 flex items-center gap-2 hover:bg-[#000080] hover:text-white">
               <img className="w-7 h-7" src="/icons/find.png" alt="find icon"/>

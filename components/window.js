@@ -76,7 +76,13 @@ export default function Window({ programInfo, windowInfo, pid }) {
                     { markdown }
                 </Markdown>
             </div>
-        } 
+        } else if (programType === 'pdf') {
+            return <div className="w-full shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] bg-white grow px-2 py-3 overflow-auto">
+                <object className="w-full h-full" data={url}>
+                     
+                </object> 
+           </div>
+        }
     }
 
     return (
@@ -109,17 +115,17 @@ export default function Window({ programInfo, windowInfo, pid }) {
                 <div className="flex gap-1 ml-auto">
                     <button 
                         className="bg-[#c0c0c0] px-2 text-sm shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff] active:shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] font-bold text-black"
-                        onClick={() => minimizeProgram(pid)}>
+                        onClick={() => minimizeProgram(pid)} onTouchStart={() => minimizeProgram(pid)}>
                         _
                     </button>
                     <button 
                         className="bg-[#c0c0c0] px-1 text-sm shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff] active:shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] flex items-center"
-                        onClick={() => isMaximized ? restoreProgram(pid) : maximizeProgram(pid)}>
+                        onClick={() => isMaximized ? restoreProgram(pid) : maximizeProgram(pid)} onTouchStart={() => isMaximized ? restoreProgram(pid) : maximizeProgram(pid)}>
                         <img className="w-4 h-4" src={isMaximized ? '/restore.png' : '/maximize.png'} alt="maximize icon"/>
                     </button>
                     <button 
                         className="bg-[#c0c0c0] px-2 text-sm shadow-[1px_1px_1px_#000,-1px_-1px_1px_#fff] active:shadow-[inset_1px_1px_0px_#7d7d7d,inset_-1px_-1px_0px_#ffffff] font-bold text-black"
-                        onClick={close}>
+                        onClick={close} onTouchStart={close}>
                         X
                     </button>
                 </div>
@@ -147,10 +153,10 @@ export default function Window({ programInfo, windowInfo, pid }) {
                 programType === 'folder' &&
                 <div className="w-full h-7 bg-[#c0c0c0] flex">
                         <div className="flex-[2] flex items-center px-2 shadow-[inset_1px_1px_1px_#7d7d7d,inset_-1px_-1px_1px_#ffffff]">
-                            <p>3 object(s)</p>
+                            <p>{ children.length } object(s)</p>
                         </div>
                         <div className="flex-[1] flex items-center px-2 shadow-[inset_1px_1px_1px_#7d7d7d,inset_-1px_-1px_1px_#ffffff]">
-                            <p>267 bytes</p>
+                            <p>{ JSON.stringify(children).length } bytes</p>
                         </div>
                 </div>
             }

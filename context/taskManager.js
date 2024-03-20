@@ -8,18 +8,47 @@ export function TaskManager({ children }) {
     height: 0
   })
 
-  const [tasks, setTasks] = useState({
-    openedPrograms: {}
-  });
-
-  const [activeProgram, setActiveProgram] = useState('')
+  // Might add few more active tasks in the future
+  const [tasks, setTasks] = useState({openedPrograms: {}});
+  const [activeProgram, setActiveProgram] = useState("dae7d90f-e2db-4cfc-8ac1-0b0948be817d")
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    const checkIsMobile = window.innerWidth < 1025
     // initialize window size
     setScreenInfo({
         width: window.innerWidth,
         height: window.innerHeight
     })
+
+    // check if the viewport is mobile
+    if (checkIsMobile) {
+      setIsMobile(true)
+    }
+
+    setTasks(prev => ({
+      ...prev,
+      openedPrograms: {
+        "dae7d90f-e2db-4cfc-8ac1-0b0948be817d": {
+          programInfo:  {
+            pid: "dae7d90f-e2db-4cfc-8ac1-0b0948be817d",
+            iconName: "Welcome.bat",
+            iconImage: "/icons/bat.png",
+            programType: "cmd",
+            asciiArt: "█░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀   ▀█▀ █▀█\n▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄   ░█░ █▄█\n\n█░█ █▄█ █░█ █▄░█ █▄▄ █ █▄░█   █▄▀ █ █▀▄▀█ ▀ █▀\n█▀█ ░█░ █▄█ █░▀█ █▄█ █ █░▀█   █░█ █ █░▀░█ ░ ▄█\n\n█▀█ █▀█ █▀█ ▀█▀ █▀▀ █▀█ █░░ █ █▀█   █░█░█ █▀▀ █▄▄ █▀ █ ▀█▀ █▀▀\n█▀▀ █▄█ █▀▄ ░█░ █▀░ █▄█ █▄▄ █ █▄█   ▀▄▀▄▀ ██▄ █▄█ ▄█ █ ░█░ ██▄",
+            content: "Welcome to windows 95 themed portfolio website of mine. \nPlease feel free to explore the one & only Operating System I created. \n \n* all of my projects are located in \"Portfolios\" folder \n** you can read my resume from Resume.txt file"
+          },
+          windowInfo: {
+            width: checkIsMobile ? window.innerWidth * .8 : window.innerWidth/2,
+            height: checkIsMobile ? window.innerHeight * .8 : window.innerHeight/2,
+            x: checkIsMobile ? 40 : 100,
+            y: checkIsMobile ? 40 : 100,
+            isMinimized: false,
+            isMaximized: false
+          }
+        }
+      }
+    }))
 
     // update window size
     function resizeHandler() {
@@ -27,6 +56,12 @@ export function TaskManager({ children }) {
             width: window.innerWidth,
             height: window.innerHeight
         })
+
+        if (window.innerWidth < 1025) {
+          setIsMobile(true)
+        } else {
+          setIsMobile(false)
+        }
     }
 
     window.addEventListener('resize', () => resizeHandler())

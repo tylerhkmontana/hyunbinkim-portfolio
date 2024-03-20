@@ -5,7 +5,7 @@
         "iconImage": "/icons/bat.png",
         "programType": "cmd",
         "asciiArt": "█░█░█ █▀▀ █░░ █▀▀ █▀█ █▀▄▀█ █▀▀   ▀█▀ █▀█\n▀▄▀▄▀ ██▄ █▄▄ █▄▄ █▄█ █░▀░█ ██▄   ░█░ █▄█\n\n█░█ █▄█ █░█ █▄░█ █▄▄ █ █▄░█   █▄▀ █ █▀▄▀█ ▀ █▀\n█▀█ ░█░ █▄█ █░▀█ █▄█ █ █░▀█   █░█ █ █░▀░█ ░ ▄█\n\n█▀█ █▀█ █▀█ ▀█▀ █▀▀ █▀█ █░░ █ █▀█   █░█░█ █▀▀ █▄▄ █▀ █ ▀█▀ █▀▀\n█▀▀ █▄█ █▀▄ ░█░ █▀░ █▄█ █▄▄ █ █▄█   ▀▄▀▄▀ ██▄ █▄█ ▄█ █ ░█░ ██▄",
-        "content": "Welcome to windows 95 themed portfolio website of mine. \nPlease feel free to explore the one & only Operating System I created. \n \n* all of my projects are located in \"Portfolios\" folder \n** you can read my resume from Resume.txt file"
+        "content": "Welcome to windows 95 themed portfolio website of mine. \nPlease feel free to explore the one & only Operating System I created. \n \n* all of my projects are located in \"Portfolios\" folder \n** you can read my resume from Resume.txt file \n*** for the best user experience, I highly recommend viewing this website on PC."
     },
     {
         "pid": "d2a29044-7cd3-4a20-bfec-198ed0d48911",
@@ -133,9 +133,9 @@
     },
     {
         "pid": "485880b0-c9bf-4f6f-b993-e984f1ce37b9",
-        "iconName": "Resume.txt",
+        "iconName": "Resume.pdf",
         "iconImage": "/icons/notepad.png",
-        "programType": "txt",
-        "content": "Rosie Miller\nPittsburgh, PA 15201\n(555) 555-5555\nexample@example.com\n\nPROFESSIONAL SUMMARY\nExperienced Restaurant Manager bringing demonstrated success in developing and motivating strong restaurant teams capable of handling over 200 customers hourly. Keeps all areas clean and sanitized while managing inventory and preventing waste. Consistent career history of operations improvement, team building and revenue increases.\n\nWORK HISTORY\nMarch 2014 to Current\nOutback Steakhouse – Pittsburgh, PA\nRestaurant Manager\n\nReduced labor costs by 17% percent while maintaining excellent service and profit levels\nManaged a 7-person team of cooks and back of house staff and a team of 8 front house staff for a busy steakhouse restaurant\nContinuously evaluated business operations to effectively align workflows for optimal area coverage increasing customer satisfaction rating by 80%\nDecember 2010 to February 2014\nTGI Fridays – Pittsburgh, PA Assistant\nRestaurant Manager\n\nReduced restaurant’s annual food and labor costs by 15% through proper budgeting, scheduling and management of inventory\nKept restaurant compliant with all federal, state and local hygiene and food safety regulations which kept food safety score between 95-100 every inspection\nCoordinated kitchen stations with managers to cut down on customer wait times by 50%\nJuly 2007 to November 2010\nBJ’s Restaurants, Inc – Pittsburgh, PA\nRestaurant Team Leader\n\nAssisted customers in placing special orders for large-scale events such as corporate events and birthday parties\nRecruited and hired over 10 employees offering talent, charisma and experience to restaurant team\nPitched in to help host, waitstaff and bussers during exceptionally busy times such as dinner hour\nSKILLS\nConflict resolution techniques\nPerformance improvement\nStaff management\nService-oriented\nTrained in performance and wage reviews\nBusiness operations\nInventory control and record keeping\nMarketing and advertising\n\nEDUCATION\nPark Point University Pittsburgh, PA\nBachelor of Arts Hospitality Management"
+        "programType": "pdf",
+        "url": "/resume.pdf"
     }
 ]
