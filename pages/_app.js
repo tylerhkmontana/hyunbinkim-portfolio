@@ -8,7 +8,7 @@ export default function MyApp({ Component, pageProps }) {
     <>
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            <link rel="icon" href="" />
+            <link rel="icon" href="/icons/window.png" />
             <title>Hyunbin Kim's Portfolio Website</title>
         </Head>
         <TaskManager>
